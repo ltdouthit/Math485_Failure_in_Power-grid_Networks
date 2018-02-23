@@ -1,0 +1,42 @@
+classdef DataClass
+    %DATACLASS:
+    %---------------------------------------------------------------------
+    %Constructor: takes str with network test case: 'case9' loads data into
+    %network_data property and initilizes properties.
+    %----------------------------------------------------------------------
+    %Methods
+    %
+    %
+    %  
+    
+    properties
+        network_data
+        nodes %Array of [#ofGen #ofLines #ofNodes]
+        real_power %Array len #ofNodes Array P in Doc. 
+    end
+    
+    methods
+        function data = DataClass(network)
+            import const.*
+            idx = idxVal;
+            %Load Test
+            data.network_data = loadcase(network);   
+            %Get number by type of Nodes
+            data.nodes(1) = uint8(size(data.network_data.gen, 1));     % # of generators
+            data.nodes(2) = uint8(size(data.network_data.branch, 1));  % # of lines
+            data.nodes(3) = uint8(size(data.network_data.bus, 1));     % # of Nodes
+            %Assign Real Power 
+            data.real_power = data.network_data.bus(:,idx.REALPOWER_INDEX);
+            %Determin tildy Bij Matrix
+            
+            
+            
+            
+            
+            
+        end
+        
+    end
+    
+end
+

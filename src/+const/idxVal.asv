@@ -4,25 +4,25 @@ classdef idxVal
     %   usage example: 
     %       net = loadcase('case5'); basePower = net.gen(:,idxVal.mBase)
     % -----------------------------------------------------------
-    % REACTANCE_INDEX is the index pf the reactance of a generator or line.
+    % X_ij is the index pf the reactance of a generator or line.
     % This is to index the reactance of a line 
     % Usage:
-    %   net = loadcase('case5'); basePower = net.branch(:,idxVal.REACTANCE_INDEX)
+    %   net = loadcase('case5'); basePower = net.gen(:,idxVal.mBase)
     % -----------------------------------------------------------
-    % NOM_FREQ_US is nominal frequency in United States i.e. 60Hz
-    % NIM_FREQ_EU is nominal Frequency in Europe i.e. 50 Hz
+    % w_oa is nominal frequency in United States i.e. 60Hz
+    % w_oe is nominal Frequency in Europe i.e. 50 Hz
     % -----------------------------------------------------------
-    % REALPOWER_INDEX is index of real power in net.bus(:,idxVal.REALPOWER_INDEX);
-    % 
+    % REALPOWER_INDEX is index of real power in 
+    % net.bus(i,i.REALPOWER_INDEX);
     properties (Constant)
         %Indexing Constants 
         mBase = 7;
-        REACTANCE_INDEX  = 4;
-        FROM_BUS = 1;
-        TO_BUS   = 2;
-        NOM_FREQ_US  = 60;
-        NIM_FREQ_EU  = 50;
-        MVA_LONG_TERM_INDEX = 6;
+        X_ij  = 4;
+        fromBus = 1;
+        toBus   = 2;
+        w_oa  = 60;
+        w_oe  = 50;
+        MVA_Branch = 6;
         REALPOWER_INDEX = 3;
         
         
