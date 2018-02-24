@@ -22,7 +22,7 @@ classdef idxVal
         TO_BUS   = 2;
         NOM_FREQ_US  = 60;
         NIM_FREQ_EU  = 50;
-        MVA_LONG_TERM_INDEX = 6;
+        MAXIMUM_REACTIVE_POWER = 4;
         REALPOWER_INDEX = 3;
         
         

@@ -5,8 +5,13 @@ function [ lambda_l ] = power_flow_f( a, b, n_l )
 % n overdot or equation (1) in the paper.
 % n_dot = power_flow_f( a, b, n_l ) - n_l
 
-lambda_l = a.^(-1).*(n_l.^(-1) - (1 - n_l).^(-1)) + a.*(n_l.^(4)) - b;
-
-
+lambda_l = a^(-1)*(n_l^(-1) - (1 - n_l)^(-1)) + a.*(n_l.^(4)) - b;
+% if temp > 1
+%lambda_l = 1;
+%elseif temp < 0
+%lambda_l = 0;
+%else
+%lambda_l = temp;    
+%end
 end
 

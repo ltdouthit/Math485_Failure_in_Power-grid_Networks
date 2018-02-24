@@ -15,6 +15,7 @@ classdef DataClass
         real_power %Array len #ofNodes Array P in Doc. 
         B_ij
         W_ij
+        gen
     end
     
     methods
@@ -27,8 +28,10 @@ classdef DataClass
             data.nodes(1) = uint8(size(data.network_data.gen, 1));     % # of generators
             data.nodes(2) = uint8(size(data.network_data.branch, 1));  % # of lines
             data.nodes(3) = uint8(size(data.network_data.bus, 1));     % # of Nodes
+            gen = data.network_data.gen(:,1);
+            data.gen = gen.'
             %Assign Real Power 
-            data.real_power = data.network_data.bus(:,idx.REALPOWER_INDEX);
+            data.real_power = zeros(1,data.nodes(3));%data.network_data.bus(:,idx.REALPOWER_INDEX);
             %Determin tildy B_ij Matrix
             data.B_ij = zeros(data.nodes(3),data.nodes(3));
             for i = 1:data.nodes(3)
@@ -39,15 +42,12 @@ classdef DataClass
             end
             %Determin W_ij Matrix
             data.W_ij = zeros(data.nodes(3),data.nodes(3));
-            for i = 1:data.nodes(3)
+            for i = 1:data.nodes(2)
                 mi = data.network_data.branch(i,idx.FROM_BUS);
                 mj = data.network_data.branch(i,idx.TO_BUS);
-                data.W_ij(mi,mj) = 1.1.*data.network_data.branch(i,idx.MVA_LONG_TERM_INDEX);
+                data.W_ij(mi,mj) = 1.1.*data.network_data.branch(i,idx.MAXIMUM_REACTIVE_POWER);
             end
-            
-            
-            
-            
+
         end
         
     end
