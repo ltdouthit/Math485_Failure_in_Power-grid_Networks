@@ -7,8 +7,8 @@ rn this is scrap to see if I can start figuring this out.
 clear all;
 import const.*
 
-a = 10;
-b = 4;
+a = 13;
+b = 8;
 testCase = 'case14';
 h = 0.001; %Step Size
 
@@ -42,7 +42,7 @@ end
 omega = zeros(1,data.nodes(3));
 for i = 1:data.nodes(3)
     if ismember(i,data.gen)
-        omega(i)  = 0.001;
+        omega(i)  = 0.0001;
     end
 end
 delta (:) = zeros(1,data.nodes(3));
@@ -127,13 +127,10 @@ omega_plt5 = [omega_plt5 omega(8)];
 
 
 
-if cnt >= 0.2
-neu(1,2) = 0.01;
-neu(2,3) = 0.01; 
-%neu(2,4) = 0.01; 
+if cnt == 0.2
+%neu(1,4) = 0.01;
+%neu(5,6) = 0.01; %fail at 4,5
 neu(7,8) = 0.01;%fail at 8,2
-neu(10,11) = 0.01;
-neu(9,14)  = 0.01;
 end
 
 
@@ -143,5 +140,19 @@ end
 %cnt
 %pause(0.01)
 end 
+x = h:h:2;
+figure
+hold on;
+ax1 = subplot(2,1,1);
+ylim([-2 2])
+plot(x,neu_1,x,neu_2,x,neu_3,x,neu_4,x,neu_5,x,neu_6,x,neu_7,x,neu_8,x,neu_9,x,neu_10,x,neu_12,x,neu_13,x,neu_14,x,neu_15,x,neu_16,x,neu_17,x,neu_18,x,neu_19,x,neu_20,x,neu_21)
+set(gcf,'units','points','position',[x0,y0,width,height])
+legend(ax1,{'Line 1,2','Line 1,5','Line 2,3','Line 2,4','Line 2.5','Line 3,4','Line 4,5','Line 4,7', 'Line 4,9','Line 5,6','Line 6,11','Line 6,12','Line 6,13',,'Line 7,8','Line 7,9','Line 4,5'})
+ax2 = subplot(2,1,2);
+ylim([-2 2])
+plot(x,omega_plt1,x,omega_plt2,x,omega_plt3,x,omega_plt4,x,omega_plt5)
+set(gcf,'units','points','position',[x0,y0,width,height])
+legend(ax2,{'Generator 1','Generator 2','Generator 3','Generator 6','Generator 8'})
+
 
 

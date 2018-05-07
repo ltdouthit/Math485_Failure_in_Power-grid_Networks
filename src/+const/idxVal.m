@@ -23,7 +23,8 @@ classdef idxVal
         NOM_FREQ_US  = 60;
         NIM_FREQ_EU  = 50;
         MAXIMUM_REACTIVE_POWER = 4;
-        REALPOWER_INDEX = 3;
+        REALPOWER_INDEX_NODE = 3;
+        REALPOWER_INDEX_GEN = 2;
         
         
     end
